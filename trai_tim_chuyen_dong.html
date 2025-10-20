@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trái tim 20/10 💖</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: radial-gradient(circle at center, #ffe4ec 0%, #ffb6c1 100%);
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    h1 {
+      position: absolute;
+      top: 40px;
+      text-align: center;
+      color: #ff3366;
+      font-size: 2rem;
+      animation: glowText 2s ease-in-out infinite alternate;
+      z-index: 10;
+    }
+
+    @keyframes glowText {
+      0% { text-shadow: 0 0 10px #ff80b3, 0 0 20px #ff99cc; }
+      100% { text-shadow: 0 0 20px #ff3385, 0 0 40px #ff007f; }
+    }
+
+    .heart {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      background: linear-gradient(135deg, #ff6699, #ff99cc);
+      transform: rotate(-45deg);
+      animation: beat 2s infinite ease-in-out, glowHeart 2s ease-in-out infinite alternate;
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(255, 0, 150, 0.6);
+      z-index: 5;
+    }
+
+    .heart::before, .heart::after {
+      content: '';
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: linear-gradient(135deg, #ff6699, #ff99cc);
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -75px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 75px;
+      top: 0;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: rotate(-45deg) scale(1); }
+      25% { transform: rotate(-45deg) scale(1.1); }
+      50% { transform: rotate(-45deg) scale(0.95); }
+      75% { transform: rotate(-45deg) scale(1.05); }
+    }
+
+    @keyframes glowHeart {
+      0% { box-shadow: 0 0 20px #ff99cc, 0 0 40px #ff66b2; }
+      100% { box-shadow: 0 0 40px #ff3399, 0 0 80px #ff66cc; }
+    }
+
+    .smallHeart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(135deg, #ff80b3, #ff4d94);
+      transform: rotate(-45deg);
+      opacity: 0.85;
+      animation: fallSmallHeart linear forwards;
+      pointer-events: none;
+    }
+
+    .smallHeart::before, .smallHeart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(135deg, #ff80b3, #ff4d94);
+      border-radius: 50%;
+    }
+
+    .smallHeart::before { top: -10px; left: 0; }
+    .smallHeart::after { left: 10px; top: 0; }
+
+    @keyframes fallSmallHeart {
+      0% { transform: translateY(-50px) rotate(-45deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(-45deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>💖 Chúc em ngày 20/10 zui zẻ nhó 💖</h1>
+  <div class="heart"></div>
+
+  <script>
+    const body = document.body;
+
+    function createSmallHeart() {
+      const h = document.createElement('div');
+      h.classList.add('smallHeart');
+      h.style.left = Math.random() * window.innerWidth + 'px';
+      const duration = 4 + Math.random() * 6;
+      h.style.animationDuration = duration + 's';
+      body.appendChild(h);
+      setTimeout(() => h.remove(), duration * 1000);
+    }
+
+    setInterval(createSmallHeart, 150);
+  </script>
+</body>
+</html>
